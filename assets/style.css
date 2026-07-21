@@ -4,7 +4,7 @@
    Design concept: Eraya's whole business is the moment before a gift
    is opened — the tag, the ribbon, the seal. This system borrows its
    vocabulary directly from that moment: swing-tag labels, a ribbon-
-   red accent, a wax-seal button, and dashed "cut here" edges instead
+   red accent, a wax-seal button, and solid "cut here" edges instead
    of generic rounded cards.
 
    01. Design Tokens
@@ -205,7 +205,7 @@ section { padding: 7rem 0; }
    06. BUTTONS
    Primary CTA reads like a wax seal / stamp: a solid circle-cornered
    pill with a pressed inner ring. Secondary reads like a ticket stub
-   with a dashed edge.
+   with a solid edge.
    ================================================================= */
 .btn {
   font-family: 'Space Mono', monospace;
@@ -244,7 +244,6 @@ section { padding: 7rem 0; }
   /* pressed inner ring, like a wax seal */
   content: "";
   position: absolute; inset: 4px;
-  border: 1px dashed rgba(255, 255, 255, .45);
   border-radius: 999px;
   pointer-events: none;
 }
@@ -258,7 +257,7 @@ section { padding: 7rem 0; }
 .hero .chat-on-whatsapp a { color: #fff; }
 
 .btn-outline-forest {
-  border: 1.5px dashed var(--pine-deep);
+  border: 1.5px solid var(--pine-deep);
   color: var(--pine-deep);
   background: transparent;
   font-weight: 700;
@@ -272,7 +271,7 @@ section { padding: 7rem 0; }
   letter-spacing: .04em;
   text-transform: uppercase;
   color: var(--pine-deep);
-  border: 1.5px dashed var(--pine-deep);
+  border: 1.5px solid var(--pine-deep);
   padding: .4rem 1rem;
   border-radius: 999px;
   background: transparent;
@@ -297,7 +296,7 @@ section { padding: 7rem 0; }
 .navbar {
   background: rgba(246, 241, 227, .92);
   backdrop-filter: blur(10px);
-  border-bottom: 1px dashed rgba(27, 58, 43, .25);
+  border-bottom: 1px solid rgba(27, 58, 43, .25);
   transition: padding .3s var(--ease);
 }
 .navbar-nav { font-family: 'Space Mono', monospace; }
@@ -356,7 +355,7 @@ section { padding: 7rem 0; }
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: .5rem;
-  border: 1px dashed var(--ribbon);
+  border: 1px solid var(--ribbon);
   padding: .45rem 1.1rem;
   border-radius: 999px;
   font-family: 'Space Mono', monospace;
@@ -368,6 +367,7 @@ section { padding: 7rem 0; }
   font-size: var(--fs-display-xl);
   font-weight: 560;
   margin: 1.3rem 0 1.4rem;
+    font-family: 'Cormorant Garamond', serif;
 }
 .hero h1 em { font-style: italic; color: var(--ribbon); }
 .hero p.lead {
@@ -414,7 +414,7 @@ section { padding: 7rem 0; }
   font-weight: 500;
   font-size: 1.7rem;
   color: var(--pine-deep);
-  border-left: 2px dashed var(--ribbon);
+  border-left: 2px solid var(--ribbon);
   padding-left: 1.3rem;
   line-height: 1.4;
 }
@@ -467,7 +467,7 @@ section { padding: 7rem 0; }
   height: 150px;
   display: flex; align-items: center; justify-content: center;
   background: var(--paper-deep);
-  border-bottom: 1px dashed rgba(27, 58, 43, .25);
+  border-bottom: 1px solid rgba(27, 58, 43, .25);
   position: relative;
 }
 .product-thumb i { font-size: 2.1rem; color: var(--pine); }
@@ -503,7 +503,7 @@ section { padding: 7rem 0; }
   border-radius: 6px;
   box-shadow: var(--shadow-lg);
   border: 6px solid #fff;
-  outline: 1px dashed rgba(27, 58, 43, .3);
+  outline: 1px solid rgba(27, 58, 43, .3);
   outline-offset: 6px;
 }
 .founder-signature {
@@ -516,7 +516,7 @@ section { padding: 7rem 0; }
 .social-round {
   width: 42px; height: 42px; border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
-  border: 1.5px dashed var(--pine-deep);
+  border: 1.5px solid var(--pine-deep);
   color: var(--pine-deep);
   transition: all .25s var(--ease);
 }
@@ -532,7 +532,7 @@ section { padding: 7rem 0; }
   overflow: hidden;
   background: var(--paper-deep);
   display: flex; align-items: center; justify-content: center;
-  border: 1px dashed rgba(27, 58, 43, .25);
+  border: 1px solid rgba(27, 58, 43, .25);
   transition: transform .3s var(--ease);
 }
 .gallery-tile:hover { transform: scale(1.04) rotate(-1deg); }
@@ -603,7 +603,7 @@ section { padding: 7rem 0; }
 .contact-item {
   display: flex; align-items: flex-start; gap: 1rem;
   padding: 1.35rem 0;
-  border-bottom: 1px dashed rgba(246, 241, 227, .25);
+  border-bottom: 1px solid rgba(246, 241, 227, .25);
 }
 .contact-item i { font-size: 1.25rem; color: var(--brass-soft); margin-top: .15rem; }
 .contact-item a, .contact-item span { color: rgba(246, 241, 227, .9); text-decoration: none; }
@@ -648,6 +648,7 @@ footer a:hover { color: var(--brass-soft); }
 .fab-top:hover { background: var(--ribbon); color: #fff; }
 
 
+
 /* =================================================================
    22. REVEAL & MOTION
    ================================================================= */
@@ -674,4 +675,43 @@ footer a:hover { color: var(--brass-soft); }
   .hero-badge { font-size: .64rem; }
   .testimonial-card { padding: 2rem 1.4rem; }
   .eyebrow { font-size: .64rem; }
+}
+
+
+
+.gallery-tabs{
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+
+}
+
+.gallery-tab{
+
+    padding:10px 22px;
+    border:none;
+    border-radius:50px;
+    background:#fff;
+    color:#1e4d3f;
+    font-weight:600;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+    cursor:pointer;
+
+}
+
+.gallery-tab:hover{
+
+    background:#1e4d3f;
+    color:#fff;
+
+}
+
+.gallery-tab.active{
+
+    background:#1e4d3f;
+    color:#fff;
+
 }

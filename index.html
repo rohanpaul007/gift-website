@@ -21,7 +21,7 @@
     rel="stylesheet">
 
   <!-- Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+ <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Site stylesheet (must load after the CDN files so it can override them) -->
   <link rel="stylesheet" href="assets/style.css">
@@ -245,10 +245,7 @@
           <p class="founder-signature mt-3 mb-1">— Mahek Shaw</p>
           <p class="text-uppercase small fw-bold" style="letter-spacing:.1em; color:var(--charcoal-soft);">Founder,
             Eraya</p>
-          <div class="d-flex gap-3 mt-4">
-            <a href="" target="_blank" class="social-round"><i class="bi bi-linkedin"></i></a>
-            <a href="https://www.instagram.com/_xms11?igsh=MXMxemhtb3E5ZXU4dQ==" target="_blank" class="social-round"><i class="bi bi-instagram"></i></a>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -261,7 +258,27 @@
         <span class="eyebrow">Our Craft</span>
         <h2 class="mt-2" style="font-size:2.4rem;">Gallery of Previous Work</h2>
       </div>
-      <div class="row g-3" id="galleryGrid"></div>
+
+      <!-- Gallery Tabs -->
+      <div class="gallery-tabs text-center mb-5">
+
+        <button class="gallery-tab active" data-filter="all">All</button>
+
+        <button class="gallery-tab" data-filter="T-Shirts">T-Shirts</button>
+
+        <button class="gallery-tab" data-filter="Diaries">Diaries</button>
+
+        <button class="gallery-tab" data-filter="Gift Sets">Gift Sets</button>
+
+        <button class="gallery-tab" data-filter="Business Cards">Business Cards</button>
+
+        <button class="gallery-tab" data-filter="Mugs">Mugs</button>
+
+        <button class="gallery-tab" data-filter="Stickers">Stickers</button>
+
+      </div>
+
+      <div class="row g-4" id="galleryGrid"></div>
     </div>
   </section>
 
@@ -464,7 +481,7 @@
           </div>
           <div class="contact-item">
             <i class="bi bi-instagram"></i>
-            <a href="https://www.instagram.com/eyara.co?igsh=MjEzYjJ6MDhmMGJ2" target="_blank">@eraya.co</a>
+            <a href="https://www.instagram.com/eyara.co" target="_blank">@eraya.co</a>
           </div>
           <div class="contact-item">
             <i class="bi bi-linkedin"></i>
@@ -548,15 +565,102 @@
     }
 
     // ---- Gallery placeholder tiles ----
-    const galleryIcons = ["bi-cup-hot", "bi-journal-bookmark", "bi-gift", "bi-bag-heart", "bi-award", "bi-pen", "bi-box2-heart", "bi-shirt"];
-    const galleryGrid = document.getElementById('galleryGrid');
-    galleryIcons.forEach(icon => {
-      const col = document.createElement('div');
-      col.className = "col-6 col-md-3 reveal";
-      col.innerHTML = `<div class="gallery-tile"><i class="bi ${icon}"></i></div>`;
-      galleryGrid.appendChild(col);
-    });
+    // ---- Gallery Images ----
+    const galleryData = [
+      {
+        title: "T-Shirts",
+        images: [
+          "images/t-shirt.jpeg",
 
+        ]
+      },
+      {
+        title: "Diaries",
+        images: [
+          "images/diary.jpeg"
+
+        ]
+      },
+      {
+        title: "Gift Sets",
+        images: [
+          "images/gift.jpeg",
+
+        ]
+      },
+      {
+        title: "Business Cards",
+        images: [
+          "images/card.jpeg",
+          "images/card (2).jpeg",
+
+        ]
+      },
+      {
+        title: "Mugs",
+        images: [
+          "images/mug.jpeg",
+
+        ]
+      },
+      {
+        title: "Stickers",
+        images: [
+          "images/sticker.jpeg",
+
+        ]
+      }
+    ];
+
+    const galleryGrid = document.getElementById("galleryGrid");
+
+    function renderGallery(filter = "all") {
+
+      galleryGrid.innerHTML = "";
+
+      galleryData.forEach(category => {
+
+        if (filter !== "all" && category.title !== filter) return;
+
+        category.images.forEach(img => {
+
+          galleryGrid.innerHTML += `
+
+            <div class="col-md-4 col-lg-4">
+
+                <div class="gallery-card">
+
+                    <img src="${img}" alt="${category.title}">
+
+                </div>
+
+            </div>
+
+            `;
+
+        });
+
+      });
+
+    }
+
+    renderGallery();
+
+    document.querySelectorAll(".gallery-tab").forEach(tab => {
+
+      tab.addEventListener("click", function () {
+
+        document.querySelectorAll(".gallery-tab").forEach(btn =>
+          btn.classList.remove("active")
+        );
+
+        this.classList.add("active");
+
+        renderGallery(this.dataset.filter);
+
+      });
+
+    });
     // ---- Scroll reveal ----
     const revealEls = document.querySelectorAll('.reveal');
     const ribbonLines = document.querySelectorAll('.ribbon-line');
