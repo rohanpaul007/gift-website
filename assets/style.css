@@ -1,35 +1,5 @@
 /* =================================================================
    ERAYA — STYLESHEET  ·  "The Gift Tag" identity
-   -----------------------------------------------------------------
-   Design concept: Eraya's whole business is the moment before a gift
-   is opened — the tag, the ribbon, the seal. This system borrows its
-   vocabulary directly from that moment: swing-tag labels, a ribbon-
-   red accent, a wax-seal button, and solid "cut here" edges instead
-   of generic rounded cards.
-
-   01. Design Tokens
-   02. Fonts & Type Scale
-   03. Reset & Base
-   04. Section Rhythm
-   05. Tag Label (signature element)
-   06. Buttons
-   07. Navbar
-   08. Divider (ribbon stitch)
-   09. Hero
-   10. About
-   11. Mission Band
-   12. Products
-   13. Why Choose Us
-   14. Founder
-   15. Gallery
-   16. Testimonials
-   17. FAQ
-   18. Enquiry Form
-   19. Contact
-   20. Footer
-   21. Floating Buttons
-   22. Reveal & Motion
-   23. Responsive
    ================================================================= */
 
 
@@ -37,36 +7,22 @@
    01. DESIGN TOKENS
    ================================================================= */
 :root {
-  /* -- Paper & ink -- */
   --paper:        #F6F1E3;
   --paper-deep:   #ECE1C6;
   --ink:          #241F16;
   --ink-soft:     #5C5340;
-
-  /* -- Pine (primary brand) -- */
   --pine:         #1B3A2B;
   --pine-deep:    #0F2419;
   --pine-soft:    #4C7160;
-
-  /* -- Ribbon (signature accent — used sparingly, like a wax seal) -- */
   --ribbon:       #7B2233;
   --ribbon-deep:  #591724;
   --ribbon-soft:  #C77E8B;
-
-  /* -- Brass (secondary accent, for labels/tags) -- */
   --brass:        #B8923F;
   --brass-soft:   #E4CE94;
-
   --shadow-sm: 0 6px 18px -10px rgba(15, 36, 25, .35);
   --shadow-md: 0 22px 42px -18px rgba(15, 36, 25, .40);
   --shadow-lg: 0 34px 64px -26px rgba(15, 36, 25, .48);
-
   --ease: cubic-bezier(.22, .61, .36, 1);
-
-  /* -- Legacy aliases --
-     A few inline styles in index.html still reference the old token
-     names from the previous palette. Mapping them here keeps those
-     inline styles working without having to hunt through the HTML. */
   --ivory: var(--paper);
   --ivory-deep: var(--paper-deep);
   --forest: var(--pine);
@@ -80,10 +36,6 @@
 
 /* =================================================================
    02. FONTS & TYPE SCALE
-   Three-voice system, each with one job:
-     - Fraunces (serif)  -> headlines, quotes -- the "handwritten card"
-     - Space Mono        -> eyebrows, tags, prices -- the "printed label"
-     - Manrope (sans)     -> paragraphs, forms, nav -- everyday reading
    ================================================================= */
 :root {
   --fs-display-xl: clamp(2.6rem, 3vw + 2rem, 4.4rem);
@@ -106,7 +58,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* faint paper-grain texture across the whole page */
 body::before {
   content: "";
   position: fixed; inset: 0; z-index: -1; pointer-events: none;
@@ -152,10 +103,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   05. TAG LABEL -- signature element
-   Replaces the plain "eyebrow" text with a swing-tag shape: a small
-   rotated card with a punched hole and a string, exactly like the
-   tags tied to a physical gift. Used above every section heading.
+   04. TAG LABEL
    ================================================================= */
 .eyebrow {
   position: relative;
@@ -176,7 +124,6 @@ section { padding: 7rem 0; }
   box-shadow: var(--shadow-sm);
 }
 .eyebrow::before {
-  /* the punched hole */
   content: "";
   position: absolute;
   left: .55rem; top: 50%;
@@ -187,7 +134,6 @@ section { padding: 7rem 0; }
   transform: translateY(-50%);
 }
 .eyebrow::after {
-  /* the little tied string, drawn as a short curved stroke */
   content: "";
   position: absolute;
   left: -14px; top: -10px;
@@ -202,10 +148,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   06. BUTTONS
-   Primary CTA reads like a wax seal / stamp: a solid circle-cornered
-   pill with a pressed inner ring. Secondary reads like a ticket stub
-   with a solid edge.
+   05. BUTTONS
    ================================================================= */
 .btn {
   font-family: 'Space Mono', monospace;
@@ -241,7 +184,6 @@ section { padding: 7rem 0; }
 }
 .hero .explore-products a { color: #fff; }
 .hero .explore-products::after {
-  /* pressed inner ring, like a wax seal */
   content: "";
   position: absolute; inset: 4px;
   border-radius: 999px;
@@ -264,21 +206,6 @@ section { padding: 7rem 0; }
 }
 .btn-outline-forest:hover { background: var(--pine-deep); color: var(--paper); border-style: solid; }
 
-.btn-enquire {
-  font-family: 'Space Mono', monospace;
-  font-size: .7rem;
-  font-weight: 700;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  color: var(--pine-deep);
-  border: 1.5px solid var(--pine-deep);
-  padding: .4rem 1rem;
-  border-radius: 999px;
-  background: transparent;
-  transition: all .25s var(--ease);
-}
-.btn-enquire:hover { background: var(--pine-deep); color: #fff; border-style: solid; }
-
 .send-enquiry button {
   background: var(--ribbon);
   color: #fff;
@@ -291,7 +218,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   07. NAVBAR
+   06. NAVBAR
    ================================================================= */
 .navbar {
   background: rgba(246, 241, 227, .92);
@@ -320,7 +247,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   08. DIVIDER -- a stitched ribbon line between sections
+   07. DIVIDER
    ================================================================= */
 .ribbon-divider { position: relative; height: 56px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .ribbon-divider svg { width: 100%; max-width: 340px; height: auto; opacity: .9; }
@@ -336,7 +263,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   09. HERO
+   08. HERO
    ================================================================= */
 .hero {
   position: relative;
@@ -367,7 +294,7 @@ section { padding: 7rem 0; }
   font-size: var(--fs-display-xl);
   font-weight: 560;
   margin: 1.3rem 0 1.4rem;
-    font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 .hero h1 em { font-style: italic; color: var(--ribbon); }
 .hero p.lead {
@@ -381,7 +308,6 @@ section { padding: 7rem 0; }
 .hero-seal-float { position: absolute; animation: float 6s ease-in-out infinite; }
 @keyframes float { 0%,100%{ transform: translateY(0) rotate(var(--r, 0deg)); } 50%{ transform: translateY(-14px) rotate(calc(var(--r, 0deg) + 2deg)); } }
 
-/* Gift cards restyled as physical swing tags: notch + hole + rotation */
 .gift-card {
   position: absolute;
   background: #fff;
@@ -406,7 +332,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   10. ABOUT
+   09. ABOUT
    ================================================================= */
 .about-quote {
   font-family: 'Fraunces', serif;
@@ -421,7 +347,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   11. MISSION BAND
+   10. MISSION BAND
    ================================================================= */
 .mission-band {
   background: var(--pine-deep);
@@ -451,36 +377,113 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   12. PRODUCTS -- cards styled as perforated ticket stubs
+   11. PRODUCTS — GALLERY STYLE WITH LARGER IMAGES
    ================================================================= */
-.product-card {
-  background: #fff;
-  border-radius: 6px;
+.product-gallery-card {
+  position: relative;
+  border-radius: 12px;
   overflow: hidden;
+  background: #fff;
   border: 1px solid rgba(27, 58, 43, .1);
-  position: relative;
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
   height: 100%;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 4px 20px rgba(0,0,0,.06);
 }
-.product-card:hover { transform: translateY(-6px) rotate(-1deg); box-shadow: var(--shadow-md); }
-.product-thumb {
-  height: 150px;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--paper-deep);
-  border-bottom: 1px solid rgba(27, 58, 43, .25);
-  position: relative;
+
+.product-gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s var(--ease);
 }
-.product-thumb i { font-size: 2.1rem; color: var(--pine); }
-.product-card .card-body { padding: 1.2rem 1.3rem 1.4rem; }
-.product-card h6 {
+
+.product-gallery-card:hover img {
+  transform: scale(1.08);
+}
+
+.product-gallery-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(123, 34, 51, .2);
+}
+
+.product-gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.5rem 1.5rem;
+  background: linear-gradient(to top, rgba(15, 36, 25, .85) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .4s var(--ease);
+}
+
+.product-gallery-card:hover .product-gallery-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-gallery-overlay h6 {
   font-family: 'Fraunces', serif;
-  font-weight: 600; font-size: 1rem; margin-bottom: .8rem; text-align: center;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: #fff;
+  margin-bottom: 0;
+  text-align: center;
+  text-shadow: 0 2px 12px rgba(0,0,0,.4);
+  letter-spacing: .02em;
 }
-.enquire-button { display: flex; justify-content: center; }
+
+/* Category Tabs */
+.gallery-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 2.5rem;
+}
+
+.gallery-tab {
+  padding: 10px 24px;
+  border: 1.5px solid rgba(27, 58, 43, .12);
+  border-radius: 50px;
+  background: #fff;
+  color: var(--pine-deep);
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: .72rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0,0,0,.04);
+  transition: all .3s var(--ease);
+  cursor: pointer;
+}
+
+.gallery-tab:hover {
+  background: var(--pine-deep);
+  color: #fff;
+  border-color: var(--pine-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(27, 58, 43, .2);
+}
+
+.gallery-tab.active {
+  background: var(--pine-deep);
+  color: #fff;
+  border-color: var(--pine-deep);
+  box-shadow: 0 6px 20px rgba(27, 58, 43, .25);
+}
 
 
 /* =================================================================
-   13. WHY CHOOSE US
+   12. WHY CHOOSE US
    ================================================================= */
 .why-card {
   padding: 2.1rem 1.7rem;
@@ -497,7 +500,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   14. FOUNDER
+   13. FOUNDER
    ================================================================= */
 .image_main img {
   border-radius: 6px;
@@ -513,34 +516,10 @@ section { padding: 7rem 0; }
   font-size: 1.5rem;
   color: var(--ribbon);
 }
-.social-round {
-  width: 42px; height: 42px; border-radius: 50%;
-  display: inline-flex; align-items: center; justify-content: center;
-  border: 1.5px solid var(--pine-deep);
-  color: var(--pine-deep);
-  transition: all .25s var(--ease);
-}
-.social-round:hover { background: var(--pine-deep); color: #fff; border-style: solid; }
 
 
 /* =================================================================
-   15. GALLERY
-   ================================================================= */
-.gallery-tile {
-  aspect-ratio: 1 / 1;
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--paper-deep);
-  display: flex; align-items: center; justify-content: center;
-  border: 1px solid rgba(27, 58, 43, .25);
-  transition: transform .3s var(--ease);
-}
-.gallery-tile:hover { transform: scale(1.04) rotate(-1deg); }
-.gallery-tile i { font-size: 1.8rem; color: var(--pine-soft); }
-
-
-/* =================================================================
-   16. TESTIMONIALS
+   14. TESTIMONIALS
    ================================================================= */
 .testimonial-card {
   background: #fff;
@@ -562,7 +541,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   17. FAQ
+   15. FAQ
    ================================================================= */
 .accordion-button {
   font-family: 'Fraunces', serif;
@@ -576,7 +555,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   18. ENQUIRY FORM
+   16. ENQUIRY FORM
    ================================================================= */
 .form-section { background: var(--paper-deep); }
 .form-control, .form-select {
@@ -598,7 +577,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   19. CONTACT
+   17. CONTACT
    ================================================================= */
 .contact-item {
   display: flex; align-items: flex-start; gap: 1rem;
@@ -615,7 +594,7 @@ section { padding: 7rem 0; }
 
 
 /* =================================================================
-   20. FOOTER
+   18. FOOTER
    ================================================================= */
 footer {
   background: var(--pine-deep);
@@ -629,7 +608,7 @@ footer a:hover { color: var(--brass-soft); }
 
 
 /* =================================================================
-   21. FLOATING BUTTONS
+   19. FLOATING BUTTONS
    ================================================================= */
 .fab {
   position: fixed; right: 22px; z-index: 999;
@@ -648,9 +627,8 @@ footer a:hover { color: var(--brass-soft); }
 .fab-top:hover { background: var(--ribbon); color: #fff; }
 
 
-
 /* =================================================================
-   22. REVEAL & MOTION
+   20. REVEAL & MOTION
    ================================================================= */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
@@ -665,53 +643,46 @@ footer a:hover { color: var(--brass-soft); }
 
 
 /* =================================================================
-   23. RESPONSIVE
+   21. RESPONSIVE
    ================================================================= */
 @media (max-width: 991px) {
   .hero { padding-top: 7.5rem; }
   .contact img { width: 100%; height: auto; }
+  .product-gallery-card {
+    aspect-ratio: 4 / 3;
+  }
 }
+
+@media (max-width: 768px) {
+  .product-gallery-card {
+    aspect-ratio: 4 / 3;
+  }
+  .product-gallery-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    background: linear-gradient(to top, rgba(15, 36, 25, .75) 0%, transparent 50%);
+    padding: 1.2rem 1rem 1rem;
+  }
+  .product-gallery-overlay h6 {
+    font-size: 1rem;
+  }
+  .gallery-tab {
+    padding: 8px 16px;
+    font-size: .62rem;
+  }
+  .gallery-tabs {
+    gap: 6px;
+  }
+}
+
 @media (max-width: 576px) {
   .hero-badge { font-size: .64rem; }
   .testimonial-card { padding: 2rem 1.4rem; }
   .eyebrow { font-size: .64rem; }
-}
-
-
-
-.gallery-tabs{
-
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:15px;
-
-}
-
-.gallery-tab{
-
-    padding:10px 22px;
-    border:none;
-    border-radius:50px;
-    background:#fff;
-    color:#1e4d3f;
-    font-weight:600;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-    transition:.3s;
-    cursor:pointer;
-
-}
-
-.gallery-tab:hover{
-
-    background:#1e4d3f;
-    color:#fff;
-
-}
-
-.gallery-tab.active{
-
-    background:#1e4d3f;
-    color:#fff;
-
+  .product-gallery-card {
+    aspect-ratio: 1 / 1;
+  }
+  .product-gallery-overlay h6 {
+    font-size: .9rem;
+  }
 }

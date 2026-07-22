@@ -20,10 +20,10 @@
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,560;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Manrope:wght@400;450;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
     rel="stylesheet">
 
-  <!-- Animate.css -->
- <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
-  <!-- Site stylesheet (must load after the CDN files so it can override them) -->
+  <!-- Site stylesheet -->
   <link rel="stylesheet" href="assets/style.css">
 </head>
 
@@ -45,7 +45,6 @@
           <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
           <li class="nav-item"><a class="nav-link" href="#why">Why Eraya</a></li>
           <li class="nav-item"><a class="nav-link" href="#founder">Founder</a></li>
-          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
         </ul>
         <div class="head-button">
@@ -148,12 +147,22 @@
       <div class="text-center mb-5 reveal">
         <span class="eyebrow">What We Craft</span>
         <h2 class="mt-2" style="font-size:2.4rem;">Our Products</h2>
-        <p class="mx-auto">Every item, fully customizable — designed to carry your story, your brand, and your
-          appreciation.</p>
+        <p class="mx-auto" style="max-width: 600px; color: var(--charcoal-soft);">Every item, fully customizable —
+          designed to carry your story, your brand, and your appreciation. Browse through our collection below.</p>
       </div>
-      <div class="row g-4" id="productGrid">
-        <!-- product cards injected by JS -->
+
+      <!-- Product Category Tabs -->
+      <div class="gallery-tabs text-center mb-5">
+        <button class="gallery-tab active" data-filter="all">All</button>
+        <button class="gallery-tab" data-filter="T-Shirts">T-Shirts</button>
+        <button class="gallery-tab" data-filter="Diaries">Diaries</button>
+        <button class="gallery-tab" data-filter="Gift Sets">Gift Sets</button>
+        <button class="gallery-tab" data-filter="Business Cards">Business Cards</button>
+        <button class="gallery-tab" data-filter="Mugs">Mugs</button>
+        <button class="gallery-tab" data-filter="Stickers">Stickers</button>
       </div>
+
+      <div class="row g-4" id="productGrid"></div>
     </div>
   </section>
 
@@ -224,7 +233,7 @@
         <div class="col-lg-5 reveal">
           <div class="image_main">
             <div>
-              <img src="images/self_image.jpeg" alt="Mahek Shaw, Founder of Eraya" class="img-fluid" width="100%">
+              <img src="images/mahek.jpeg" alt="Mahek Shaw, Founder of Eraya" class="img-fluid" width="100%">
             </div>
           </div>
         </div>
@@ -245,40 +254,9 @@
           <p class="founder-signature mt-3 mb-1">— Mahek Shaw</p>
           <p class="text-uppercase small fw-bold" style="letter-spacing:.1em; color:var(--charcoal-soft);">Founder,
             Eraya</p>
-          
+
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===================== GALLERY ===================== -->
-  <section id="gallery">
-    <div class="container">
-      <div class="text-center mb-5 reveal">
-        <span class="eyebrow">Our Craft</span>
-        <h2 class="mt-2" style="font-size:2.4rem;">Gallery of Previous Work</h2>
-      </div>
-
-      <!-- Gallery Tabs -->
-      <div class="gallery-tabs text-center mb-5">
-
-        <button class="gallery-tab active" data-filter="all">All</button>
-
-        <button class="gallery-tab" data-filter="T-Shirts">T-Shirts</button>
-
-        <button class="gallery-tab" data-filter="Diaries">Diaries</button>
-
-        <button class="gallery-tab" data-filter="Gift Sets">Gift Sets</button>
-
-        <button class="gallery-tab" data-filter="Business Cards">Business Cards</button>
-
-        <button class="gallery-tab" data-filter="Mugs">Mugs</button>
-
-        <button class="gallery-tab" data-filter="Stickers">Stickers</button>
-
-      </div>
-
-      <div class="row g-4" id="galleryGrid"></div>
     </div>
   </section>
 
@@ -518,149 +496,66 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ---- Product data ----
-    const products = [
-      { name: "Customized Diaries", icon: "bi-journal-bookmark" },
-      { name: "Mugs", icon: "bi-cup-hot" },
-      { name: "Pens", icon: "bi-pen" },
-      { name: "T-Shirts", icon: "bi-shirt" },
-      { name: "Business Cards", icon: "bi-person-vcard" },
-      { name: "ID Cards", icon: "bi-credit-card-2-front" },
-      { name: "Certificates", icon: "bi-award" },
-      { name: "Stickers", icon: "bi-stickies" },
-      { name: "Welcome Kits", icon: "bi-box2-heart" },
-      { name: "Corporate Gift Boxes", icon: "bi-gift" },
-      { name: "Bottles", icon: "bi-cup-straw" },
-      { name: "Keychains", icon: "bi-key" },
-      { name: "Tote Bags", icon: "bi-bag-heart" },
-      { name: "Notebooks", icon: "bi-journal-text" },
-      { name: "Office Stationery", icon: "bi-pencil" },
-      { name: "Employee Joining Kits", icon: "bi-briefcase" },
-      { name: "Client Appreciation Gifts", icon: "bi-heart" }
-    ];
-
-    const productGrid = document.getElementById('productGrid');
-    products.forEach(p => {
-      const col = document.createElement('div');
-      col.className = "col-6 col-md-4 col-lg-3 reveal";
-      col.innerHTML = `
-    <div class="product-card">
-      <div class="product-thumb"><i class="bi ${p.icon}" style="color: #1e4d3f;"></i></div>
-      <div class="card-body">
-        <h6 class="text-center">${p.name}</h6>
-        <div class="enquire-button d-flex justify-content-center">
-          <button class=" btn btn-enquire " onclick="enquireAbout('${p.name}')">Enquire Now</button>
-        </div>
-      </div>
-    </div>`;
-      productGrid.appendChild(col);
-    });
-
-    function enquireAbout(name) {
-      const form = document.getElementById('enquiryForm');
-      const select = form.querySelector('[name="product"]');
-      for (const opt of select.options) { if (opt.value === name) { select.value = name; break; } }
-      document.getElementById('enquire').scrollIntoView({ behavior: 'smooth' });
-      form.querySelector('[name="name"]').focus({ preventScroll: true });
-    }
-
-    // ---- Gallery placeholder tiles ----
-    // ---- Gallery Images ----
-    const galleryData = [
+    // ---- Product Data with Images ----
+    const productData = [
       {
         title: "T-Shirts",
-        images: [
-          "images/t-shirt.jpeg",
-
-        ]
+        images: ["images/t-shirt.jpeg"]
       },
       {
         title: "Diaries",
-        images: [
-          "images/diary.jpeg"
-
-        ]
+        images: ["images/diary.jpeg"]
       },
       {
         title: "Gift Sets",
-        images: [
-          "images/gift.jpeg",
-
-        ]
+        images: ["images/gift.jpeg"]
       },
       {
         title: "Business Cards",
-        images: [
-          "images/card.jpeg",
-          "images/card (2).jpeg",
-
-        ]
+        images: ["images/card.jpeg", "images/card (2).jpeg"]
       },
       {
         title: "Mugs",
-        images: [
-          "images/mug.jpeg",
-
-        ]
+        images: ["images/mug.jpeg"]
       },
       {
         title: "Stickers",
-        images: [
-          "images/sticker.jpeg",
-
-        ]
+        images: ["images/sticker.jpeg"]
       }
     ];
 
-    const galleryGrid = document.getElementById("galleryGrid");
+    const productGrid = document.getElementById("productGrid");
 
-    function renderGallery(filter = "all") {
-
-      galleryGrid.innerHTML = "";
-
-      galleryData.forEach(category => {
-
+    function renderProducts(filter = "all") {
+      productGrid.innerHTML = "";
+      productData.forEach(category => {
         if (filter !== "all" && category.title !== filter) return;
-
         category.images.forEach(img => {
-
-          galleryGrid.innerHTML += `
-
-            <div class="col-md-4 col-lg-4">
-
-                <div class="gallery-card">
-
-                    <img src="${img}" alt="${category.title}">
-
+          productGrid.innerHTML += `
+            <div class="col-md-6 col-lg-4">
+              <div class="product-gallery-card">
+                <img src="${img}" alt="${category.title}">
+                <div class="product-gallery-overlay">
+                  <h6>${category.title}</h6>
                 </div>
-
+              </div>
             </div>
-
-            `;
-
+          `;
         });
-
       });
-
     }
 
-    renderGallery();
+    renderProducts();
 
+    // ---- Product Tab Filtering ----
     document.querySelectorAll(".gallery-tab").forEach(tab => {
-
       tab.addEventListener("click", function () {
-
-        document.querySelectorAll(".gallery-tab").forEach(btn =>
-          btn.classList.remove("active")
-        );
-
+        document.querySelectorAll(".gallery-tab").forEach(btn => btn.classList.remove("active"));
         this.classList.add("active");
-
-        renderGallery(this.dataset.filter);
-
+        renderProducts(this.dataset.filter);
       });
-
     });
+
     // ---- Scroll reveal ----
     const revealEls = document.querySelectorAll('.reveal');
     const ribbonLines = document.querySelectorAll('.ribbon-line');
